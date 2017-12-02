@@ -15,22 +15,13 @@ Then, there is a line for each vehicle: first, we give an integral label to the 
 
 For instance, the text file encoding the initial state described above is:
 
-6
-
-8 
-
-1 h 2 2 3 
-
-2 h 2 1 1 
-
-3 h 2 5 5 
-
-4 h 3 3 6 
-
-5 v 3 6 1 
-
-6 v 3 1 2 
-
-7 v 3 4 2 
-
-8 v 2 1 5
+    6
+    8 
+    1 h 2 2 3 
+    2 h 2 1 1 
+    3 h 2 5 5 
+    4 h 3 3 6 
+    5 v 3 6 1 
+    6 v 3 1 2 
+    7 v 3 4 2 
+    8 v 2 1 5
