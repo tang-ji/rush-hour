@@ -1,6 +1,6 @@
-package main;
+package solver;
 
-import view.InvalidFileException;
+import Exception.*;
 
 public class Vehicle {
 	// Set the car label automatically from '1'
@@ -43,6 +43,7 @@ public class Vehicle {
 
 		this.Y = Integer.parseInt(split[4]);
 		if(this.Y < 0) throw new InvalidFileException();
+		
 	}
 	
 	public int label() {
@@ -57,22 +58,20 @@ public class Vehicle {
 		return orientation;
 	}
 	
-	public int X() {
-		return X;
-	}
-	
-	public int Y() {
-		return Y;
-	}
+//	public int X() {
+//		return X;
+//	}
+//	
+//	public int Y() {
+//		return Y;
+//	}
 	
 	public int up() {
 		return Y - 1;
 	}
 	
 	public int down() {
-		int result = Y - 1;
-		result += (orientation == 'v' ? length : 1);
-		return result;
+		return orientation == 'v' ? Y - 1 + length : Y;
 	}
 	
 	public int left() {
@@ -80,9 +79,7 @@ public class Vehicle {
 	}
 	
 	public int right() {
-		int result = X - 1;
-		result += (orientation == 'h' ? length : 1);
-		return result;
+		return orientation == 'h' ? X - 1 + length : X;
 	}
 	
 	public String toString() {

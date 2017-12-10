@@ -2,10 +2,8 @@ package main;
 
 import java.io.File;
 
-import view.InvalidFileException;
-import view.VehiclesIntersectException;
-import view.VehiclesInvalidException;
-import view.Window;
+import solver.*;
+import Exception.*;
 
 public class Main {
 	
@@ -16,7 +14,9 @@ public class Main {
 
 	public static void main(String[] args) throws VehiclesIntersectException, VehiclesInvalidException, InvalidFileException {
 		Window win = new Window(file("RushHour1.txt"));
+		State s = new State(win);
 		System.out.println(win);
+		while(!s.won) s.updateWindows();
 	}
 
 }
