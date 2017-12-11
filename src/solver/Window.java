@@ -14,6 +14,34 @@ public class Window {
 	private int width;
 	private int height;
 	
+	public void changeState(String s) throws VehiclesIntersectException, VehiclesInvalidException {
+		int[] newMoved = HashToMoved(s);
+		List<Integer> l = new LinkedList<>();
+		for(int i = 1; i < moved.length; i++) {
+			if(moved[i] != newMoved[i - 1]) {
+				remove(vehicles.get(i));
+				l.add(i);
+			}
+		}
+		for(int i : l) {
+			moved[i] = newMoved[i - 1];
+			add(vehicles.get(i));
+		}
+	}
+	
+	public int[] HashToMoved(String s) {
+		int[] ret = new int[vehicles.size()];
+		int index = 0, j = 0;
+		for(int i = 1; i < s.length(); i++) {
+			if(s.charAt(i) == '+' || s.charAt(i) == '-') {
+				ret[index++] = Integer.parseInt(s.substring(j, i));
+				j = i;
+			}
+		}
+		ret[index] = Integer.parseInt(s.substring(j, s.length()));
+		return ret;
+	}
+	
 	public Window(int w, int h) {
 		this.width = w;
 		this.height = h;
@@ -182,10 +210,7 @@ public class Window {
 	
 	public boolean isWin() {
 		Vehicle v = vehicles.get(new Integer(1));
-		for(int i = getRight(v); i < width; i++) {
-			if(plan[i][getUp(v)] != 0) return false;
-		}
-		return true;
+		return plan[plan.length - 1][getUp(v)] == 1;
 	}
 	
 	public String toString() {

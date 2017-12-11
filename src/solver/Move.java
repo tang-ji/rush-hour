@@ -3,8 +3,8 @@ package solver;
 import Exception.*;
 
 public class Move {
-	private Vehicle vehicle;
-	private int cases;
+	protected Vehicle vehicle;
+	protected int cases;
 	
 	public Move(Vehicle vehicle, int cases) {
 		this.vehicle = vehicle;

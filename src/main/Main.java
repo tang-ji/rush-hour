@@ -1,6 +1,7 @@
 package main;
 
 import java.io.File;
+import java.util.*;
 
 import solver.*;
 import Exception.*;
@@ -14,9 +15,17 @@ public class Main {
 
 	public static void main(String[] args) throws VehiclesIntersectException, VehiclesInvalidException, InvalidFileException {
 		Window win = new Window(file("RushHour1.txt"));
-		State s = new State(win);
 		System.out.println(win);
-		while(!s.won) s.updateWindows();
+		
+		long startTime = System.currentTimeMillis();
+		BFS b = new BFS(win);
+		LinkedList<Move> l = b.solve();
+		long endTime = System.currentTimeMillis();
+		
+		long Time = endTime - startTime;
+		System.out.println(l);
+		System.out.print("We need " + l.size() + " steps. ");
+		System.out.printf("(Elapsed time: %d ms.)", Time);
 	}
 
 }
