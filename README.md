@@ -25,3 +25,5 @@ For instance, the text file encoding the initial state described above is:
     6 v 3 1 2 
     7 v 3 4 2 
     8 v 2 1 5
+
+This Java program will solve the rush-hour problem. It contains 40 examples of rush-hour problem (named GameP01.txt - GameP40.txt). The Main function will solve the 40 examples 1000 times and calculate the execution time without printing the solution. Then it will solve a simple example(GameP01) by BFS with showing the solution in the end.
